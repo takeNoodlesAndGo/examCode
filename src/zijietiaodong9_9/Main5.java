@@ -9,6 +9,7 @@ public class Main5 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		//用dfs的思路进行暴力搜索，然后会出现循环，用一个set保存已经循环过的节点，
 		Scanner scan = new Scanner(System.in);
 		int n = scan.nextInt();
 		scan.nextLine();
@@ -20,7 +21,7 @@ public class Main5 {
 			int value = scan.nextInt();
 			arrs[key][value] = true;
 		}
-		if(m<n-1) {
+		if(m<n-1) {//关注的数量小于n-1.则肯定不能全部关注
 			System.out.println(0);
 			return ;
 		}
@@ -36,7 +37,7 @@ public class Main5 {
 				for(int k =0;k<size;k++) {
 					int temp = stack.pop();
 					for(int j=1;j<=n;j++) {
-						if(j==i)
+						if(j==i) //不处理自己
 							continue;
 						if(arrs[j][temp]&&!set.contains(j)) {
 							set.add(j);
@@ -45,7 +46,7 @@ public class Main5 {
 					}
 				}
 			}
-			if(set.size()==n-1) {
+			if(set.size()==n-1) {//set的大小为n-1说明构成达人
 				num++;
 			}
 		}
